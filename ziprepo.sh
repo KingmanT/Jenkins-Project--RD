@@ -15,7 +15,7 @@ ZipFileName="kuralabs_deployment_1"
 GitCloneCMD="git clone $GitGubUrl"
 
 #Command to zip the cloned repository
-ZipCMD="zip -q $ZipFileName -r $RepoFolderName/* .[^.]*"
+ZipCMD="zip -q ../"$ZipFileName" -r * .[^.]*"
 
 #Check if the zip command is installed
 which zip > /dev/null 2>&1
@@ -27,7 +27,7 @@ if [ $? -ne 0 ]; then
 fi
 
 #Clone the repository and zip it
-$GitCloneCMD && $ZipCMD
+$GitCloneCMD && cd $RepoFolderName && $ZipCMD && cd ..
 
 #Check if the commands worked
 if [ $? -ne 0 ]; then
